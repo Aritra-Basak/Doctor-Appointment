@@ -21,7 +21,7 @@ class AppointmentBooking
 	ArrayList<Integer> patientAgeBooking=new ArrayList<Integer>();
 	ArrayList<String> patientNameBooking=new ArrayList<String>();
 	ArrayList<String> patientGenderBooking=new ArrayList<String>();
-	ArrayList<Byte> doctorID=new ArrayList<Byte>();
+	ArrayList<Byte> doctorID=new ArrayList<Byte>(); //for storing the serial number of doctor that has been appointed. 
 
 	//method for creating PreDefined doctor list.
 	void dataAdd()		
@@ -100,6 +100,7 @@ class AppointmentBooking
 
 		while(flag)
 		{
+			 Thread.sleep(1000);
 	
 			System.out.println("\t\t  _________________________");
 			System.out.println("\t\t |                         |");
@@ -153,12 +154,14 @@ class AppointmentBooking
 						menuCHoice=sc.nextByte();
 						if(menuCHoice==1)
 						{
+							Thread.sleep(1000);
 							flag=false;
 							
 						}
 						else
 						{
-							break;
+							Thread.sleep(1000);
+							admin();
 						}
 					}
 					
@@ -176,16 +179,26 @@ class AppointmentBooking
 				{
 					for(int i=0; i<=patientNameBooking.size()-1; i++)
 					{
-						System.out.println((i+1)+". "+patientNameBooking.get(i));
+						System.out.println((i+1)+". "+patientNameBooking.get(i)+"- The Doctor Appointed is: "+doctorName.get(doctorID.get(i)-1));
 					}
-
-					Thread.sleep(5000);
-					flag=false;
-
+					System.out.println("\n\n1. Main menu\t 2. Previous menu");
+					menuCHoice=sc.nextByte();
+					if(menuCHoice==1)
+					{
+						Thread.sleep(1000);
+						flag=false;
+						
+					}
+					else
+					{
+						Thread.sleep(1000);
+						admin();
+					}
 				}
+				break;
 			case 4:
-				System.out.println("\nYou chose to exit");
-				flag= false;// making the flag = false will terminate the while loop
+				System.out.println("\nYou chose to Move Back");
+				flag= false;
 				Thread.sleep(1000);
 				break;
 			
@@ -212,6 +225,7 @@ class AppointmentBooking
 		while(flag)
 		{
 		
+			Thread.sleep(1000);
 			System.out.println("\t\t  _________________________");
 			System.out.println("\t\t |                         |");
 			System.out.println("\t\t | Welcome to Patient Page!|");
@@ -244,7 +258,7 @@ class AppointmentBooking
 					
 				case 3:
 					System.out.println("\nYou chose to exit");
-					flag= false; // making the flag = false will terminate the while loop
+					flag= false;
 					Thread.sleep(1000);
 					break;
 				
@@ -270,7 +284,7 @@ class AppointmentBooking
 		boolean flag=true;
 		while(flag)
 		{
-			//Thread.sleep(1000);
+		    Thread.sleep(1000);
 	
 
 			System.out.println("\t\t  _________________________");
@@ -335,10 +349,12 @@ class AppointmentBooking
 
 		System.out.println("\t\t  _________________________");
 		System.out.println("\t\t |                         |");
-		System.out.println("\t\t |         Login 		   |");
+		System.out.println("\t\t |          Login          |");
 		System.out.println("\t\t |_________________________|");
 
-		System.out.println("Enter your Username(mobilenumber)");
+		
+
+		System.out.println("\nEnter your Username(mobilenumber)");
 		mobileNumber=sc.nextLong();
 		System.out.println("Enter your Password");
 		String password=sc.next();
@@ -360,7 +376,7 @@ class AppointmentBooking
 		if(flag1==true)
 		{		
 			Thread.sleep(1000);
-			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			
 				System.out.println("\t\t  _________________________");
 				System.out.println("\t\t |                         |");
 				System.out.println("\t\t |     Book Appointment    |");
@@ -380,24 +396,23 @@ class AppointmentBooking
 			{
 				Thread.sleep(1000);
 
-				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+				
 				System.out.println("\t\t  _________________________");
 				System.out.println("\t\t |                         |");
 				System.out.println("\t\t |     Book Appointment    |");
 				System.out.println("\t\t |_________________________|");
 				
 				
-				//for(int i=0; i<=doctorName.size()-1;i++)
-				//{
+				
 					if(choice<=doctorName.size() && choice>0)
 					{
 						System.out.println("\n\nName: \t "+doctorName.get(choice-1)+"\nAge: \t "+doctorAge.get(choice-1)+"\nMobile:  "+doctorMobileNumber.get(choice-1)+"\nCity: \t "+doctorCity.get(choice-1));
-						System.out.println("\n Enter your name: \t");
+						System.out.println("\n Enter the patient's name: \t");
 						sc.nextLine();
 						patientNameBooking.add(sc.nextLine());
-						System.out.println(" Enter your age: \t");
+						System.out.println(" Enter patient's age: \t");
 						patientAgeBooking.add(sc.nextInt());
-						System.out.println(" Enter your gender: \t");
+						System.out.println(" Enter patient's gender: \t");
 						patientGenderBooking.add(sc.next());
 
 						System.out.println("\n Booking Successfull..");
@@ -414,7 +429,7 @@ class AppointmentBooking
 					}
 				
 					
-				//}
+				
 			}	
 
 		}
@@ -618,7 +633,14 @@ class AppointmentBooking
 									
 								}
 							}
-							Thread.sleep(4000);//Due to this we can display the name and then after 4 sec. We will back to the previous menu.
+							System.out.println("\n\n1. Previous menu");
+							Byte menuCHoice=sc.nextByte();
+							if(menuCHoice==1)
+							{
+								Thread.sleep(1000);
+								flag=false;
+							}
+							
 							
 						}
 						else 
@@ -686,6 +708,7 @@ class AppointmentBooking
 					}
 					case 4:
 					{
+						 Thread.sleep(1000);
 				    System.out.println("\t\t| Good Bye! Have a Nice Day. |\n\n");	
 				    System.exit(0);
 					}
